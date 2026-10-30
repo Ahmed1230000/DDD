@@ -1,0 +1,21 @@
+<?php
+
+namespace {{ namespace }};
+
+use InvalidArgumentException;
+
+class {{ class }}
+{
+    protected mixed $value;
+
+    public function __construct(mixed $value)
+    {
+        // TODO: add validation
+        $this->value = $value;
+    }
+
+    public function value(): mixed
+    {
+        return $this->value;
+    }
+}

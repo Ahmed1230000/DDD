@@ -1,0 +1,33 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ contractNamespace }}\{{ contract }};
+
+class {{ class }} implements {{ contract }}
+{
+    public function save(array $data)
+    {
+        //
+    }
+
+    public function update(int $id, array $data)
+    {
+        //
+    }
+
+    public function delete(int $id): bool
+    {
+        //
+    }
+
+    public function show(int $id)
+    {
+        //
+    }
+
+    public function list(): array
+    {
+        //
+    }
+}

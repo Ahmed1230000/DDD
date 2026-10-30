@@ -1,0 +1,10 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Common\Exceptions\SystemException;
+
+class {{ class }} extends SystemException
+{
+    //
+}

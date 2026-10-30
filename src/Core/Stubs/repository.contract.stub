@@ -1,0 +1,23 @@
+<?php
+
+namespace {{ namespace }};
+
+interface {{ class }}
+{
+     /**
+     * Implement Your Entity And Enjoy Develop
+     * Define your contract.
+     * The implementation depends on your business rules.
+     */
+
+     
+    public function save(array $data);
+
+    public function update(int $id, array $data);
+
+    public function delete(int $id): bool;
+
+    public function show(int $id);
+
+    public function list(): array;
+}

@@ -1,0 +1,110 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
+use App\Common\Traits\ApiResponse;
+use App\Common\Traits\LogMessage;
+
+{{ policy_import }}
+
+{{ requests }}
+
+{{ uses }}
+
+{{ resources }}
+
+{{ query_builder }}
+
+class {{ entity }}Controller extends Controller
+{
+    use ApiResponse, LogMessage;
+
+    public function __construct(
+        {{ constructor }}{{ query_constructor }}
+    ) {
+        {{ authorize_resource }}
+    }
+
+    public function index()
+    {
+        try {
+            {{ index_logic }}
+        } catch (\Throwable $e) {
+            $this->logMessage('Fetch {{ entity }} Failed', [
+                'error' => $e->getMessage()
+            ], 'error');
+
+            return $this->apiResponse(null, 'Something went wrong', 500);
+        }
+    }
+
+    public function show({{ entity }} {{ model_variable }})
+    {
+        try {
+            {{ show_logic }}
+        } catch (\Throwable $e) {
+            $this->logMessage('Fetch {{ entity }} Failed', [
+                'error' => $e->getMessage()
+            ], 'error');
+
+            return $this->apiResponse(null, 'Something went wrong', 500);
+        }
+    }
+
+    public function store({{ store_request }} $request): JsonResponse
+    {
+        try {
+            $data = {{ store_data }};
+
+            $dto = {{ dto }}::fromArray($data);
+
+            $result = $this->createUseCase->execute($dto);
+
+            {{ store_response }}
+        } catch (\Throwable $e) {
+            $this->logMessage('Create {{ entity }} Failed', [
+                'error' => $e->getMessage()
+            ], 'error');
+
+            return $this->apiResponse(null, 'Something went wrong', 500);
+        }
+    }
+
+    public function update({{ update_request }} $request,{{ entity }} {{ model_variable }}): JsonResponse
+    {
+        try {
+            $data = {{ update_data }};
+
+            $dto = {{ dto }}::fromArray([
+                ...$data,
+            ]);
+
+            $result = $this->updateUseCase->execute({{ model_id }},$dto);
+
+            {{ update_response }}
+        } catch (\Throwable $e) {
+            $this->logMessage('Update {{ entity }} Failed', [
+                'error' => $e->getMessage()
+            ], 'error');
+
+            return $this->apiResponse(null, 'Something went wrong', 500);
+        }
+    }
+
+    public function destroy({{ entity }} {{ model_variable }})
+    {
+        try {
+            $this->deleteUseCase->execute({{ model_id }});
+
+            return $this->apiResponse(null, '{{ entity }} deleted successfully', 200);
+        } catch (\Throwable $e) {
+            $this->logMessage('Delete {{ entity }} Failed', [
+                'error' => $e->getMessage()
+            ], 'error');
+
+            return $this->apiResponse(null, 'Something went wrong', 500);
+        }
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "name": "ahmed/laravel-ddd",
+    "type": "library",
+    "description": "A Laravel DDD implementation",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ahmed\\DDD\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ahmed\\DDD\\Providers\\DDDServiceProvider"
+            ]
+        }
+    }
+}

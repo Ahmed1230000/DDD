@@ -1,0 +1,21 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ dto_namespace }}\{{ dto }};
+use {{ repository_namespace }}\{{ repository }};
+
+class {{ class }}
+{
+    public function __construct(
+        protected {{ repository }} $repository
+    ) {}
+
+    public function execute({{ dto }} $dto): {{ dto }}
+    {
+        // TODO: implement business logic
+        $this->repository;
+
+        return $dto;
+    }
+}

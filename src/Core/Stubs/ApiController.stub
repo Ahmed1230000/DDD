@@ -1,0 +1,132 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Http\Controllers\Controller;
+use App\Common\Traits\ApiResponse;
+use App\Common\Traits\LogMessage;
+
+{{ policy_import }}
+
+{{ requests }}
+
+{{ uses_cases_import }}
+
+{{ dtos_import }}
+
+{{ resources }}
+
+{{ query_builder }}
+
+class {{ entity }} extends Controller
+{
+    use ApiResponse, LogMessage;
+
+    public function __construct(
+{{ uses_cases }}{{ query_constructor }}
+    ) {
+{{ authorize_resource }}
+    }
+
+    public function index()
+    {
+        try {
+            {{ index_logic }}
+
+            {{ index_response }}
+        } catch (\Throwable $e) {
+            $this->logMessage('Fetch {{ entity }} Failed', [
+                'error' => $e->getMessage()
+            ], 'error');
+
+            return $this->apiResponse(
+                null,
+                'Something went wrong',
+                500
+            );
+        }
+    }
+
+    public function store({{ store_request }})
+    {
+        try {
+            {{ store_data }}
+
+            {{ store_dto }}
+
+            {{ store_usecase }}
+
+            {{ store_response }}
+        } catch (\Throwable $e) {
+            $this->logMessage('Create {{ entity }} Failed', [
+                'error' => $e->getMessage()
+            ], 'error');
+
+            return $this->apiResponse(
+                null,
+                'Something went wrong',
+                500
+            );
+        }
+    }
+    public function show({{ entity }})
+    {
+        try {
+            {{ show_logic }}
+
+            {{ show_response }}
+        } catch (\Throwable $e) {
+            $this->logMessage('Fetch {{ entity }} Failed', [
+                'error' => $e->getMessage()
+            ], 'error');
+
+            return $this->apiResponse(
+                null,
+                'Something went wrong',
+                500
+            );
+        }
+    }
+
+    public function update({{ update_request }}, {{ entity }})
+    {
+        try {
+            {{ update_data }}
+
+            {{ update_dto }}
+
+            {{ update_usecase }}
+
+            {{ update_response }}
+        } catch (\Throwable $e) {
+            $this->logMessage('Update {{ entity }} Failed', [
+                'error' => $e->getMessage()
+            ], 'error');
+
+            return $this->apiResponse(
+                null,
+                'Something went wrong',
+                500
+            );
+        }
+    }
+
+    public function destroy({{ entity }})
+    {
+        try {
+            {{ destroy_usecase }}
+
+            {{ destroy_response }}
+        } catch (\Throwable $e) {
+            $this->logMessage('Delete {{ entity }} Failed', [
+                'error' => $e->getMessage()
+            ], 'error');
+
+            return $this->apiResponse(
+                null,
+                'Something went wrong',
+                500
+            );
+        }
+    }
+}

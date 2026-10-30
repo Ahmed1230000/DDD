@@ -1,0 +1,10 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use {{ controller_namespace }}\{{ controller }};
+
+Route::middleware(['auth:api'])->group(function () {
+
+    Route::resource('{{ resource }}', {{ controller }}::class);
+
+});

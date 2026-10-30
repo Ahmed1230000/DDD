@@ -1,0 +1,32 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Http\Resources\Json\JsonResource;
+use {{ dto_namespace }}\{{ dto }};
+use Illuminate\Http\Request;
+
+class {{ entity }} extends JsonResource
+{
+    /** @var {{ dto }} */
+    public $resource;
+
+    public function toArray(Request $request): array
+    {
+        return [
+            'id' => $this->resource->getId()?->value(),
+
+            // TODO: map DTO fields
+            // 'name' => $this->resource->getName()->value(),
+
+            // 🔥 VO example
+            // 'email' => $this->resource->getEmail()->value(),
+
+            // 🔥 nullable VO
+            // 'optional' => $this->resource->getSomething()?->value(),
+
+            'created_at' => $this->resource->getCreatedAt(),
+            'updated_at' => $this->resource->getUpdatedAt(),
+        ];
+    }
+}

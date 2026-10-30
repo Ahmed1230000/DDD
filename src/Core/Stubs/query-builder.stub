@@ -1,0 +1,23 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Infrastructure\BaseQueryBuilder;
+use App\Models\{{ model }};
+
+class {{ class }} extends BaseQueryBuilder
+{
+    protected string $model = {{ model }}::class;
+
+    protected array $allowedIncludes = [
+        //
+    ];
+
+    protected array $allowedFilters = [
+        //
+    ];
+
+    protected array $allowedSorts = [
+        //
+    ];
+}

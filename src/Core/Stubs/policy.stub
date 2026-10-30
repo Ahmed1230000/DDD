@@ -1,0 +1,64 @@
+<?php
+
+namespace {{ namespace }};
+
+{{ imports }}
+
+class {{ class }}
+{
+    /**
+     * Determine whether any models can be viewed.
+     */
+    public function viewAny(User $user): bool
+    {
+        return true;
+    }
+
+    /**
+     * Determine whether the model can be viewed.
+     */
+    public function view(User $user ,{{ model }} ${{ modelVariable }}): bool
+    {
+        return true;
+    }
+
+    /**
+     * Determine whether models can be created.
+     */
+    public function create(User $user): bool
+    {
+        return true;
+    }
+
+    /**
+     * Determine whether the model can be updated.
+     */
+    public function update(User $user, {{ model }} ${{ modelVariable }}): bool
+    {
+        return true;
+    }
+
+    /**
+     * Determine whether the model can be deleted.
+     */
+    public function delete(User $user, {{ model }} ${{ modelVariable }}): bool
+    {
+        return true;
+    }
+
+    /**
+     * Determine whether the model can be restored.
+     */
+    public function restore(User $user, {{ model }} ${{ modelVariable }}): bool
+    {
+        return true;
+    }
+
+    /**
+     * Determine whether the model can be permanently deleted.
+     */
+    public function forceDelete(User $user, {{ model }} ${{ modelVariable }}): bool
+    {
+        return true;
+    }
+}

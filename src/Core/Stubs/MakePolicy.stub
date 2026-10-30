@@ -1,0 +1,64 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ auth_model_namespace }};
+use {{ model_namespace }};
+
+class {{ class }}
+{
+    public function viewAny(
+        {{ auth_model }} ${{ authModelVariable }}
+    ): bool {
+
+        return true;
+    }
+
+    public function view(
+        {{ auth_model }} ${{ authModelVariable }},
+        {{ model }} ${{ modelVariable }}
+    ): bool {
+
+        return true;
+    }
+
+    public function create(
+        {{ auth_model }} ${{ authModelVariable }},
+        {{ model }} ${{ modelVariable }}
+    ): bool {
+
+        return true;
+    }
+
+    public function update(
+        {{ auth_model }} ${{ authModelVariable }},
+        {{ model }} ${{ modelVariable }}
+    ): bool {
+
+        return true;
+    }
+
+    public function delete(
+        {{ auth_model }} ${{ authModelVariable }},
+        {{ model }} ${{ modelVariable }}
+    ): bool {
+
+        return true;
+    }
+
+    public function restore(
+        {{ auth_model }} ${{ authModelVariable }},
+        {{ model }} ${{ modelVariable }}
+    ): bool {
+
+        return true;
+    }
+
+    public function forceDelete(
+        {{ auth_model }} ${{ authModelVariable }},
+        {{ model }} ${{ modelVariable }}
+    ): bool {
+
+        return true;
+    }
+}

@@ -1,0 +1,23 @@
+<?php
+
+namespace {{ namespace }};
+
+class {{ class }}
+{
+    /*
+    |--------------------------------------------------------------------------
+    | Constructor
+    |--------------------------------------------------------------------------
+    */
+
+    public function __construct(
+        {{ properties }}
+    ) {}
+
+
+    public static function fromArray(array $data)
+    {
+        return new self();
+    }
+
+}

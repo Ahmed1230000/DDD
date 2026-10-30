@@ -1,0 +1,56 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Http\Controllers\Controller;
+use App\Common\Traits\ApiResponse;
+use App\Common\Traits\LogMessage;
+
+{{ imports }}
+
+class {{ class }} extends Controller
+{
+    use ApiResponse, LogMessage;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Constructor
+    |--------------------------------------------------------------------------
+    */
+
+{{ constructor_block }}
+
+    /*
+    |--------------------------------------------------------------------------
+    | Invoke
+    |--------------------------------------------------------------------------
+    */
+
+    public function __invoke(
+{{ request_parameter }}
+    )
+    {
+        try {
+
+{{ request_data }}
+
+{{ dto_instance }}
+
+{{ execute }}
+
+{{ resource_transform }}
+
+{{ response }}
+
+        } catch (\Throwable $e) {
+
+            $this->logMessage($e);
+
+            return $this->apiResponse(
+                null,
+                $e->getMessage(),
+                500
+            );
+        }
+    }
+}
